@@ -1,7 +1,7 @@
 <?php 
 $conn = mysqli_connect("localhost","root","","tiket_pesawat");
 
-// function
+// function login
 function regis($isi) {
     global $conn;
 
@@ -37,6 +37,17 @@ function regis($isi) {
                 ('$password','$nama','$username')");
     
     return mysqli_affected_rows($conn);
+}
+
+function tampil($data) {
+    global $conn;
+
+    $result = mysqli_query($conn,$data);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
 }
 
 

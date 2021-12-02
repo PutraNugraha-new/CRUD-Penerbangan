@@ -1,9 +1,9 @@
 <?php 
-require 'pages/login/fungsi.php';
+require_once 'pages/fungsi-login.php';
 session_start();
 
 if(!isset($_SESSION["submit"])) {
-    header("Location:pages/login/index.php");
+    header("Location:pages/index.php");
     exit;
 }
 
@@ -30,7 +30,7 @@ $data = mysqli_fetch_assoc($result);
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-plane me-2"></i>STMIK Airport</div>
             <div class="list-group list-group-flush my-3">
-                <a href="dasbor.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-plane-departure me-2"></i>Keberangkatan</a>
@@ -40,7 +40,7 @@ $data = mysqli_fetch_assoc($result);
                         class="fas fa-plane me-2"></i>Maskapai</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user-secret me-2"></i> Pilot</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=tb-login" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user me-2"></i> Pengguna</a>
                 <a href="pages/login/logout.php" onclick="return confirm('Apakah anda ingin Keluar ??');" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
