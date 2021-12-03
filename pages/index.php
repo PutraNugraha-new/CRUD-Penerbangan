@@ -45,7 +45,7 @@ if(isset($_POST["submit"])) {
         <div class="global-container">
             <div class="card login-form shadow">
                 <div class="card-body">
-                    <h1 class="card-title text-center">STMIK AIRPORT</h1>
+                    <h1 class="card-title text-center">4Group Airport</h1>
                 </div>
                 <div class="card-text">
                     <form action="" method="post">
