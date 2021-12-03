@@ -4,10 +4,10 @@ if(isset($_POST["submit"])) {
     if(regis($_POST) > 0) {
         echo "
                 <script>
-                    alert('Registrasi Berhasil');
                     document.location.href = 'index.php?p=tb-login';
                 </script>
             ";
+            $_SESSION["sukses-tambah"] = 'Data Berhasil Disimpan';
     }else{
         echo "
                 <script>

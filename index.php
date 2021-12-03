@@ -1,5 +1,6 @@
 <?php 
 require_once 'pages/fungsi-login.php';
+error_reporting(0);
 session_start();
 
 if(!isset($_SESSION["submit"])) {
@@ -153,7 +154,7 @@ $data = mysqli_fetch_assoc($result);
 
 </html>
 
-<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>

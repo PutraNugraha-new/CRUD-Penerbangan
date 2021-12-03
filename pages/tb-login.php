@@ -1,7 +1,7 @@
 <?php 
 require_once 'fungsi-login.php';
-
-// session_start();
+error_reporting(0);
+session_start();
 
 if(!isset($_SESSION["submit"])) {
     header("Location:index.php");
@@ -26,7 +26,7 @@ if (isset($_POST["cari"])) {
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
-<!-- <?php session_start(); ?> -->
+
 
 <div class="container-fluid-post px-4">
                 <div class="row g-3 my-2">
@@ -55,7 +55,7 @@ if (isset($_POST["cari"])) {
                                 <td><?= $akun["password"]; ?></td>
                                 <td>
                                 <!-- <a class="fa fa-edit btn btn-warning mx-1" href="index.php?p=edit-akun&username=<?php echo $akun['username']; ?>"></a> -->
-                                <a class="hapus fa fa-trash btn btn-danger" name="hapus-akun" href="index.php?p=fungsi-login&username=<?php echo $akun['username']; ?>" onclick="return confirm('Apakah ingin di hapus ?');" ></a>
+                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-akun" href="index.php?p=fungsi-login&username=<?php echo $akun['username']; ?>" onclick="<?php $_SESSION["confirm-hapus"] = 'You wont be able to revert this!'; ?>" ></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -96,7 +96,7 @@ if (isset($_POST["cari"])) {
 
         <!-- jika ada session sukses maka tampilkan sweet alert dengan pesan yang telah di set
     di dalam session sukses  -->
-<!-- <?php if (@$_SESSION['sukses-tambah']) { ?>
+<?php if (@$_SESSION['sukses-tambah']) { ?>
 	<script>
 		swal("Tambah Data Berhasil", "<?php echo $_SESSION['sukses-tambah']; ?>", "success");
 	</script>
@@ -118,4 +118,29 @@ if (isset($_POST["cari"])) {
 	</script>
 
 <?php unset($_SESSION['sukses-hapus']);
-} ?> -->
+} ?>
+
+<?php if (@$_SESSION['confirm-hapus']) { ?>
+	<script>
+		Swal.fire({
+                title: 'Are you sure?',
+                text: "<?php echo $_SESSION['confirm-hapus']; ?>",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).
+                then((result) => {
+                    if (result.value) {
+                        Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+                    }
+                    })
+	</script>
+
+<?php unset($_SESSION['confirm-hapus']);
+} ?>

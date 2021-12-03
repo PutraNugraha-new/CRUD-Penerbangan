@@ -1,5 +1,6 @@
 <?php 
 $conn = mysqli_connect("localhost","root","","tiket_pesawat");
+session_start();
 
 // function login
 function regis($isi) {
