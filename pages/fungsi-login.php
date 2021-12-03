@@ -34,7 +34,7 @@ function regis($isi) {
 
     // insert data ke datbase
     mysqli_query($conn,"INSERT INTO user VALUES
-                ('$password','$nama','$username')");
+                ('$username','$password','$nama')");
     
     return mysqli_affected_rows($conn);
 }

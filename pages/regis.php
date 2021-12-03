@@ -1,11 +1,11 @@
 <?php 
-require 'fungsi.php';
+require_once 'fungsi-login.php';
 if(isset($_POST["submit"])) {
     if(regis($_POST) > 0) {
         echo "
                 <script>
                     alert('Registrasi Berhasil');
-                    document.location.href = 'index.php';
+                    document.location.href = 'index.php?p=tb-login';
                 </script>
             ";
     }else{
@@ -19,50 +19,51 @@ if(isset($_POST["submit"])) {
 }
 ?>
 
-<!doctype html>
-<html lang="en">
-    <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-
-    <title>Registrasi</title>
-    </head>
-    <body>
-        <div class="global-container">
-            <div class="card login-form">
-                <div class="card-body">
-                    <h1 class="card-title text-center">R E G I S T R A S I</h1>
-                </div>
-                <div class="card-text">
-                    <form action="" method="post">
-                        <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Nama Lengkap</label>
-                            <input type="text" name="nama" class="form-control" id="exampleInputText" aria-describedby="emailHelp">
+<div class="container-fluid-post px-4">
+                <div class="row g-3 my-2">
+                    <!-- pebmuka -->
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <h5>Form Registrasi</h5>
+                        <div class="row justify-content-start py-3">
+                            <div class="col-4">
+                                <label for="nama_pengguna" required>Nama Pengguna</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="nama_pengguna" name="nama_pengguna" class="form-control" placeholder="Masukan Nama Lengkap" required>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputUsername1" class="form-label">Username</label>
-                            <input type="username" name="username" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp">
+                        <div class="row justify-content-start py-3">
+                            <div class="col-4">
+                                <label for="username" required>Username</label>
+                            </div>
+                            <div class="col-8">
+                                <input required maxlength="61" type="text" id="username" name="username" class="form-control" placeholder="Masukan username">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                        <div class="row justify-content-start py-3">
+                            <div class="col-4">
+                                <label for="password" required>Password</label>
+                            </div>
+                            <div class="col-8">
+                                <input required maxlength="61" type="password" id="password" name="password" class="form-control" placeholder="Masukan password">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Konfirmasi Password</label>
-                            <input type="password" name="password2" class="form-control" id="exampleInputPassword1">
+                        <div class="row justify-content-start py-3">
+                            <div class="col-4">
+                                <label for="password2" required>Konfirmasi Password</label>
+                            </div>
+                            <div class="col-8">
+                                <input required maxlength="61" type="password" id="password2" name="password2" class="form-control" placeholder="Konfirmasi password">
+                            </div>
                         </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" name="submit" class="btn btn-primary">Registrasi</button>
+                        
+                        <div class="row justify-content-end py-3">
+                            <div class="col-2">
+                                <!-- <a class="btn btn-primary" name="submit" href="#">+Tambah Berita</a> -->
+                                <button class="btn btn-primary" name="submit">Registrasi</button>
+                            </div>
                         </div>
                     </form>
+                    <!-- penutup -->
                 </div>
             </div>
-        </div>
-
-    </body>
-</html>

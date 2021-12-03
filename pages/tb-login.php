@@ -31,8 +31,9 @@ if (isset($_POST["cari"])) {
 <div class="container-fluid-post px-4">
                 <div class="row g-3 my-2">
                     <form action="" method="post">
-                    <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button>
-                    <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari">
+                    <a class="float-start btn btn-primary" href="index.php?p=regis"><i class="fa fa-plus-circle"></i> Tambah Data</a>
+                    <!-- <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button> -->
+                    <!-- <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari"> -->
                     </form>
                     <table class="table  table-striped table-hover">
                         <thead>

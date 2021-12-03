@@ -42,7 +42,7 @@ $data = mysqli_fetch_assoc($result);
                         class="fas fa-user-secret me-2"></i> Pilot</a>
                 <a href="index.php?p=tb-login" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user me-2"></i> Pengguna</a>
-                <a href="pages/login/logout.php" onclick="return confirm('Apakah anda ingin Keluar ??');" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                <a href="pages/logout.php" onclick="return confirm('Apakah anda ingin Keluar ??');" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>

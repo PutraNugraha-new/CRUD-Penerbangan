@@ -12,7 +12,7 @@ if(isset($_POST["submit"])) {
 
     $result = mysqli_query($conn,"SELECT * FROM user WHERE username = '$username'");
     $data = mysqli_fetch_array($result);
-    $nama[] = $data1;
+    $nama[] = $data;
     if($data){
         if(($username == $data['username']) && ($password == $data['password'])) {
             $_SESSION["username"] = $username;
