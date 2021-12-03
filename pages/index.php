@@ -1,9 +1,9 @@
 <?php 
 session_start();
-require 'fungsi.php';
+require_once 'fungsi-login.php';
 
 if(isset($_SESSION["submit"])) {
-    header("Location:../../index.php");
+    header("Location:../index.php");
 }
 
 if(isset($_POST["submit"])) {
@@ -17,7 +17,7 @@ if(isset($_POST["submit"])) {
         if(($username == $data['username']) && ($password == $data['password'])) {
             $_SESSION["username"] = $username;
             $_SESSION["submit"] = true;
-            header("Location:../../index.php");
+            header("Location:../index.php");
         }else{
             echo "
                     <script>
