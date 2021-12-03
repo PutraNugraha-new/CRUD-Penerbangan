@@ -50,6 +50,34 @@ function tampil($data) {
     return $rows;
 }
 
+if (isset($_POST['edit-akun'])) {
+	$username = $_POST['username'];
+	$nama					= $_POST['nama_pengguna'];
+	$password				= $_POST['password'];
+	$queryEdit = mysqli_query($conn, "UPDATE user SET nama_pengguna='$nama', password='$password' WHERE username = '$username' ");
+
+	$_SESSION["sukses-edit"] = 'Data Berhasil Diedit';
+
+	if ($queryEdit) {
+		header("location: index.php?p=tb-login");
+	} else {
+		echo "ERROR, Tidak Berhasil Edit Data " . mysqli_error($koneksi);
+	}
+}
+
+if (isset($_GET['username'])) {
+	$username = $_GET['username'];
+
+	$queryHapus = mysqli_query($conn, "DELETE FROM user WHERE username = '$username'");
+
+	$_SESSION["sukses-hapus"] = 'Data Berhasil Dihapus';
+
+	if ($queryHapus == true) {
+		header("location: index.php?p=tb-login");
+	} else {
+		echo "ERROR, Tidak Berhasil Hapus Data " . mysqli_error($koneksi);
+	}
+}
 
 
 ?>

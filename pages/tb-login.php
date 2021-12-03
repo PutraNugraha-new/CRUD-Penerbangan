@@ -54,8 +54,8 @@ if (isset($_POST["cari"])) {
                                 <td><?= $akun["username"]; ?></td>
                                 <td><?= $akun["password"]; ?></td>
                                 <td>
-                                    <a class="btn btn-warning fas fa-edit mr-2" href="edit.php?username=<?= $akun["username"]?>"></a>
-                                    <a class="btn btn-danger fas fa-trash mr-2" href="crud/konten/hapus.php?username=<?= $akun["username"]?>" onclick="return confirm ('Apakah anda ingin menghapus Data?')"></a>
+                                <!-- <a class="fa fa-edit btn btn-warning mx-1" href="index.php?p=edit-akun&username=<?php echo $akun['username']; ?>"></a> -->
+                                <a class="hapus fa fa-trash btn btn-danger" name="hapus-akun" href="index.php?p=fungsi-login&username=<?php echo $akun['username']; ?>" onclick="return confirm('Apakah ingin di hapus ?');" ></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
