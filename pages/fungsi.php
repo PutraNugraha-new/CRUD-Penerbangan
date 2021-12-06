@@ -1,5 +1,5 @@
 <?php
-include './koneksi.php';
+include '../koneksi.php';
 
 $id_penumpang       =$_POST['id_penumpang'];
 $nama_penumpang     =$_POST['nama_penumpang'];
@@ -9,6 +9,21 @@ $jumlah_bagasi      =$_POST['jumlah_bagasi'];
 $tgl_keberangkatan  =$_POST['tgl_keberangkatan'];
 
 // fungsi penumpang
+
+
+
+function tampilkan($data) {
+    global $conn;
+
+    $result =mysqli_query($conn,$data);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+
 if($_POST['tambah-penumpang']){
     $queryTambah = mysqli_query($conn,"INSERT INTO tb_data_penumpang VALUES('','$nama_penumpang','$email_penumpang',
     '$kelas_penerbangan','$jumlah_bagasi','$tgl_keberangkatan')");

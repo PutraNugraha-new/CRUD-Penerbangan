@@ -11,16 +11,17 @@ if(!isset($_SESSION["submit"])) {
 
 // konfigur paginasi
 $jumlahdataperhalaman = 5;
-$jumlahdata = count(tampil("SELECT * FROM tb_data-penumpang"));
+$jumlahdata = count(tampilkan("SELECT * FROM tb_penumpang"));
 $jumlahhalaman = ceil($jumlahdata / $jumlahdataperhalaman);
 $halamanaktf = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awaldata = ($jumlahdataperhalaman * $halamanaktf) - $jumlahdataperhalaman;
 
-$konten = tampil("SELECT * FROM tb_data-penumpang LIMIT $awaldata,$jumlahdataperhalaman");
+$konten = tampilkan("SELECT * FROM tb_penumpang LIMIT $awaldata,$jumlahdataperhalaman");
 
 if (isset($_POST["cari"])) {
     $konten = cari($_POST["keyword"]);
 }
+
 
 
 ?>
@@ -32,34 +33,34 @@ if (isset($_POST["cari"])) {
                 <div class="row g-3 my-2">
                     <form action="" method="post">
                     <a class="float-start btn btn-primary" href="index.php?p=regis"><i class="fa fa-plus-circle"></i> Tambah Data</a>
-                    <!-- <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button> -->
-                    <!-- <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari"> -->
+                    <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button>
+                    <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari">
                     </form>
                     <table class="table  table-striped table-hover">
                         <thead>
                             <tr>
-                            <th>NO</th>
-                            <th>NAMA PENUMPANG</th>
-                            <th>EMAIL PENUMPANG</th>
-                            <th>KELAS PENERBANGAN</th>
-                            <th>JUMLAH BAGASI</th>
-                            <th>TANGGAL KEBERANGKATAN</th>
-                                <th>Aksi</th>
+                            <th scope="col">NO</th>
+                            <th scope="col">NAMA PENUMPANG</th>
+                            <th scope="col">EMAIL PENUMPANG</th>
+                            <th scope="col">KELAS PENERBANGAN</th>
+                            <th scope="col">JUMLAH BAGASI</th>
+                            <th scope="col">TANGGAL KEBERANGKATAN</th>
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i=1; ?>
-                            <?php foreach ($konten as $penumpang) : ?>
+                            <?php foreach ($konten as $penump) : ?>
                             <tr>
                                 <td><?= $i + $awaldata; ?></td>
-                                <td><?= $penumpang['nama_penumpang']; ?></td>
-                                <td><?= $penumpang['email_penumpang']; ?></td>
-                                <td><?= $penumpang['kelas_penerbangan']; ?></td>
-                                <td><?= $penumpang['jumlah_bagasi']; ?></td>
-                                <td><?= $penumpang['tgl_keberangkatan']; ?></td>
+                                <td><?= $penump['nama_penumpang']; ?></td>
+                                <td><?= $penump['email_penumpang']; ?></td>
+                                <td><?= $penump['kelas_penerbangan']; ?></td>
+                                <td><?= $penump['jumlah_bagasi']; ?></td>
+                                <td><?= $penump['tgl_keberangkatan']; ?></td>
                                 <td>
-                                <!-- <a class="fa fa-edit btn btn-warning mx-1" href="index.php?p=edit-penumpang&username=<?php echo $penumpang['username']; ?>"></a> -->
-                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-penumpang" href="index.php?p=fungsi-login&username=<?php echo $penumpang['username']; ?>" onclick="<?php $_SESSION["confirm-hapus"] = 'You wont be able to revert this!'; ?>" ></a>
+                                <a class="fa fa-edit btn btn-warning my-2" href="index.php?p=edit-penump&username=<?php echo $penump['username']; ?>"></a>
+                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-penump" href="index.php?p=fungsi-login&username=<?php echo $penump['username']; ?>" onclick="<?php $_SESSION["confirm-hapus"] = 'You wont be able to revert this!'; ?>" ></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
