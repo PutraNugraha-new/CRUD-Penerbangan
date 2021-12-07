@@ -1,5 +1,7 @@
 <?php
+session_start();
 include '../koneksi.php';
+
 
 $id_penumpang       =$_POST['id_penumpang'];
 $nama_penumpang     =$_POST['nama_penumpang'];
@@ -9,9 +11,6 @@ $jumlah_bagasi      =$_POST['jumlah_bagasi'];
 $tgl_keberangkatan  =$_POST['tgl_keberangkatan'];
 
 // fungsi penumpang
-
-
-
 function tampilkan($data) {
     global $conn;
 
@@ -24,38 +23,57 @@ function tampilkan($data) {
 }
 
 
-if($_POST['tambah-penumpang']){
-    $queryTambah = mysqli_query($conn,"INSERT INTO tb_data_penumpang VALUES('','$nama_penumpang','$email_penumpang',
-    '$kelas_penerbangan','$jumlah_bagasi','$tgl_keberangkatan')");
-    // $_SESSION["sukses-tambah"]='yey,data anda berhasil disimpan!';
+if ($_POST['tambah-penumpang']) {
+	$queryTambah = mysqli_query($conn, "INSERT INTO tb_penumpang VALUES('', '$nama_penumpang', '$email_penumpang', '$kelas_penerbangan','$jumlah_bagasi','$tgl_keberangkatan')");
 
-    if($queryTambah){
-        header("location:index.php?p=tb-data-penumpang");
-    }else{
-        echo "ERROR,yah data anda tidak berhasil ditambahkan".mysqli_error($conn);
-    }
+	$_SESSION["sukses-tambah"] = 'Data Berhasil Disimpan';
+
+	if ($queryTambah) {
+		echo "
+            <script> window.location.href='index.php?p=tb-penumpang';</script>
+            ";
+	} else {
+		echo "ERROR, Tidak Berhasil Tambah Data " . mysqli_error($conn);
+	}
 }
 
 if(isset($_POST['edit-penumpang'])){
-    $queryEdit = mysqli_query($conn,"UPDATE tb_data_penumpang SET nama_penumpang='$nama_penumpang',email_penumpang='$email_penumpang',kelas_penerbangan='$kelas_penerbangan'
+    $queryEdit = mysqli_query($conn,"UPDATE tb_penumpang SET nama_penumpang='$nama_penumpang',email_penumpang='$email_penumpang',kelas_penerbangan='$kelas_penerbangan'
      WHERE id_penumpang='$id_penumpang'") ;
+
     $_SESSION["sukses-edit"]='yey,data anda berhasil diedit!';
+    
     if($queryEdit){
-        header("location:index.php?p=tb_data_penumpang");
+        echo "
+            <script> window.location.href='index.php?p=tb-penumpang';</script>
+            ";
     }else{
         echo "ERROR,yah data anda tidak berhasil diedit".mysqli_error($conn);
     }
 }
 
-if(isset($_GET['id'])){
-    $id_penumpang=$_GET['id'];
-    $queryHapus=mysqli_query($conn,"DELETE FROM tb_data_penumpang WHERE id_penumpang='$id_penumpang'");
+if(isset($_GET['id-penumpang'])){
+    $id_penumpang=$_GET['id-penumpang'];
+    $queryHapus=mysqli_query($conn,"DELETE FROM tb_penumpang WHERE id_penumpang='$id_penumpang'");
     $_SESSION["sukses-hapus"]='yey,data anda berhasil dihapus!';
     if($queryHapus){
-        header("location:index.php?p=tb-data-penumpang");
+        echo "
+            <script> window.location.href='index.php?p=tb-penumpang';</script>
+            ";
     }else{
         echo "ERROR,yah data anda tidak berhasil dihapus".mysqli_error($conn);
     }
+}
+
+function cari($keyword) {
+    $query = "SELECT * FROM tb_penumpang WHERE
+                nama_penumpang LIKE '%$keyword%' OR
+                email_penumpang LIKE '%$keyword%' OR
+                kelas_penerbangan LIKE '%$keyword%' OR
+                jumlah_bagasi LIKE '%$keyword%' OR
+                tgl_keberangkatan LIKE '%$keyword%'
+    ";
+    return tampil($query);  
 }
 
 

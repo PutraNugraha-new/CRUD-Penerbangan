@@ -1,7 +1,7 @@
 <?php 
-require_once 'fungsi-login.php';
+// require_once 'fungsi-login.php';
 include 'fungsi.php';
-error_reporting(0);
+// error_reporting(0);
 session_start();
 
 if(!isset($_SESSION["submit"])) {
@@ -9,14 +9,14 @@ if(!isset($_SESSION["submit"])) {
     exit;
 }
 
-// konfigur paginasi
-$jumlahdataperhalaman = 5;
-$jumlahdata = count(tampilkan("SELECT * FROM tb_penumpang"));
-$jumlahhalaman = ceil($jumlahdata / $jumlahdataperhalaman);
-$halamanaktf = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
-$awaldata = ($jumlahdataperhalaman * $halamanaktf) - $jumlahdataperhalaman;
+// // konfigur paginasi
+// $jumlahdataperhalaman = 5;
+// $jumlahdata = count(tampilkan("SELECT * FROM tb_penumpang"));
+// $jumlahhalaman = ceil($jumlahdata / $jumlahdataperhalaman);
+// $halamanaktf = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
+// $awaldata = ($jumlahdataperhalaman * $halamanaktf) - $jumlahdataperhalaman;
 
-$konten = tampilkan("SELECT * FROM tb_penumpang LIMIT $awaldata,$jumlahdataperhalaman");
+$konten = tampilkan("SELECT * FROM tb_penumpang ");
 
 if (isset($_POST["cari"])) {
     $konten = cari($_POST["keyword"]);
@@ -32,7 +32,7 @@ if (isset($_POST["cari"])) {
 <div class="container-fluid-post px-4">
                 <div class="row g-3 my-2">
                     <form action="" method="post">
-                    <a class="float-start btn btn-primary" href="index.php?p=regis"><i class="fa fa-plus-circle"></i> Tambah Data</a>
+                    <a class="float-start btn btn-primary" href="index.php?p=tambah-penumpang"><i class="fa fa-plus-circle"></i> Tambah Data</a>
                     <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button>
                     <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari">
                     </form>
@@ -59,8 +59,8 @@ if (isset($_POST["cari"])) {
                                 <td><?= $penump['jumlah_bagasi']; ?></td>
                                 <td><?= $penump['tgl_keberangkatan']; ?></td>
                                 <td>
-                                <a class="fa fa-edit btn btn-warning my-2" href="index.php?p=edit-penump&username=<?php echo $penump['username']; ?>"></a>
-                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-penump" href="index.php?p=fungsi-login&username=<?php echo $penump['username']; ?>" onclick="<?php $_SESSION["confirm-hapus"] = 'You wont be able to revert this!'; ?>" ></a>
+                                <a class="fa fa-edit btn btn-warning my-2" href="index.php?p=edit-penumpang&id-penumpang=<?php echo $penump['id_penumpang']; ?>"></a>
+                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-penumpang" href="index.php?p=fungsi&id-penumpang=<?php echo $penump['id_penumpang']; ?>" onclick="return confirm ('Yakin ingin menghapus data ?')" ></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -68,12 +68,12 @@ if (isset($_POST["cari"])) {
                         </tbody>
                     </table>
                     <!-- paginasi -->
-                    <?php if(!isset($_POST["cari"])) : ?>
+                    <!-- <?php if(!isset($_POST["cari"])) : ?>
                         <nav class="paginasi" aria-label="Page navigation example">
                         <ul class="pagination">
                                 <?php if ($halamanaktf > 1) : ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="?halaman=<?= $halamanaktf - 1 ?>" aria-label="Previous">
+                                        <a class="page-link" href="index.php?p=tb-penumpang?halaman=<?= $halamanaktf - 1 ?>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -87,14 +87,14 @@ if (isset($_POST["cari"])) {
                                 <?php endfor; ?>
                                 <?php if($halamanaktf < $jumlahhalaman): ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="?halaman=<?= $halamanaktf + 1 ?>" aria-label="Next">
+                                        <a class="page-link" href="/tb-penumpang.php?halaman=<?= $halamanaktf + 1 ?>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 <?php endif; ?>
                         </ul>
                     </nav>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
 
                 </div>
             </div>
