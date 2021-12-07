@@ -29,6 +29,7 @@ if (isset($_POST["cari"])) {
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
 
 
+
 <div class="container-fluid-post px-4">
                 <div class="row g-3 my-2">
                     <form action="" method="post">
@@ -60,7 +61,7 @@ if (isset($_POST["cari"])) {
                                 <td><?= $penump['tgl_keberangkatan']; ?></td>
                                 <td>
                                 <a class="fa fa-edit btn btn-warning my-2" href="index.php?p=edit-penumpang&id-penumpang=<?php echo $penump['id_penumpang']; ?>"></a>
-                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-penumpang" href="index.php?p=fungsi&id-penumpang=<?php echo $penump['id_penumpang']; ?>" onclick="return confirm ('Yakin ingin menghapus data ?')" ></a>
+                                <a class="hapus fa fa-trash btn btn-danger" name="hapus-penumpang" href="index.php?p=fungsi&id-penumpang=<?php echo $penump['id_penumpang']; ?>" id="btn" onclick="return confirm ('Yakin ingin menghapus data?');" ></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -125,27 +126,27 @@ if (isset($_POST["cari"])) {
 <?php unset($_SESSION['sukses-hapus']);
 } ?>
 
-<?php if (@$_SESSION['confirm-hapus']) { ?>
-	<script>
-		Swal.fire({
-                title: 'Are you sure?',
-                text: "<?php echo $_SESSION['confirm-hapus']; ?>",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-                }).
-                then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                        )
-                    }
-                    })
-	</script>
+	<!-- <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            })
+        });
+	</script> -->
 
-<?php unset($_SESSION['confirm-hapus']);
-} ?>
+
