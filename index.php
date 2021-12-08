@@ -32,17 +32,17 @@ $data = mysqli_fetch_assoc($result);
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-plane me-2"></i>4Group Airport</div>
             <div class="list-group list-group-flush my-3">
-                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="index.php" id="active" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-plane-departure me-2"></i>Keberangkatan</a>
-                <a href="index.php?p=tb-penumpang" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=tb-penumpang"  <?php if ($_GET["p"] == "tb-penumpang") echo "id ='active'";?> class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-users me-2"></i>Penumpang</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-plane me-2"></i>Maskapai</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user-secret me-2"></i> Pilot</a>
-                <a href="index.php?p=tb-login" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=tb-login" <?php if ($_GET["p"] == "tb-login") echo "id ='active'";?>  class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user me-2"></i> Pengguna</a>
                 <a href="pages/logout.php" onclick="return confirm('Apakah anda ingin Keluar ??');" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>

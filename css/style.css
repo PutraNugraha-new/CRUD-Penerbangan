@@ -1,7 +1,7 @@
 :root {
     /* --main-bg-color: #009d63; */
     --main-text-color: #151c36;
-    --second-text-color: #2f2557;
+    --second-text-color: #bbbec5;
     --second-bg-color: #abb1bc;
 }
 
@@ -80,7 +80,7 @@ body {
     padding: 20px 30px;
 }
 
-.list-group-item.active {
+#active {
     background-color: transparent;
     color: var(--main-text-color);
     font-weight: bold;

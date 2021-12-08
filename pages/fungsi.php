@@ -10,7 +10,7 @@ $kelas_penerbangan  =$_POST['kelas_penerbangan'];
 $jumlah_bagasi      =$_POST['jumlah_bagasi'];
 $tgl_keberangkatan  =$_POST['tgl_keberangkatan'];
 
-// fungsi penumpang
+
 function tampilkan($data) {
     global $conn;
 
@@ -22,7 +22,7 @@ function tampilkan($data) {
     return $rows;
 }
 
-
+// fungsi penumpang
 if ($_POST['tambah-penumpang']) {
 	$queryTambah = mysqli_query($conn, "INSERT INTO tb_penumpang VALUES('', '$nama_penumpang', '$email_penumpang', '$kelas_penerbangan','$jumlah_bagasi','$tgl_keberangkatan')");
 
@@ -76,7 +76,7 @@ function cari($keyword) {
     return tampil($query);  
 }
 
-
+// fungsi keberangkatan
 
 
 ?>
