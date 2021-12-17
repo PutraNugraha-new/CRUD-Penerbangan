@@ -1,3 +1,12 @@
+<?php 
+require_once './koneksi.php';
+
+$jp = mysqli_query($conn,"SELECT * FROM tb_penumpang");
+$hitung = mysqli_num_rows($jp);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +31,7 @@
         <div class="col-md-3 mx-auto" data-tilt>
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">0</h3>
+                    <h3 class="fs-2"><?= $hitung ?></h3>
                     <p class="fs-5">Total Penumpang</p>
                 </div>
                 <i
@@ -91,7 +100,7 @@
             config
         );  
     </script>
-    <script type="text/javascript" src="../assets/vanilla-tilt.min.js"></script>
+    <script type="text/javascript" src="./assets/vanilla-tilt.min.js"></script>
 </body>
 </html>
 

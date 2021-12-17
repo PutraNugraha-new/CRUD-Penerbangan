@@ -30,7 +30,7 @@ if ($_POST['tambah-penumpang']) {
 
 	if ($queryTambah) {
 		echo "
-            <script> window.location.href='index.php?p=tb-penumpang';</script>
+            <script> window.location='index.php?p=tb-penumpang';</script>
             ";
 	} else {
 		echo "ERROR, Tidak Berhasil Tambah Data " . mysqli_error($conn);
