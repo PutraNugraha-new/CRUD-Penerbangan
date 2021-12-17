@@ -77,6 +77,12 @@ function cari($keyword) {
 }
 
 // fungsi keberangkatan
-
+function cari_keberangkatan($keyword) {
+    $query = "SELECT * FROM tb_detail_keberangkatan WHERE
+                nama_maskapai LIKE '%$keyword%' OR
+                tgl_keberangkatan LIKE '%$keyword%'
+    ";
+    return tampil($query);  
+}
 
 ?>

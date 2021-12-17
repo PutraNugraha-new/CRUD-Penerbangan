@@ -34,7 +34,7 @@ $data = mysqli_fetch_assoc($result);
             <div class="list-group list-group-flush my-3">
                 <a href="index.php" id="active" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=tb-keberangkatan" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-plane-departure me-2"></i>Keberangkatan</a>
                 <a href="index.php?p=tb-penumpang"  <?php if ($_GET["p"] == "tb-penumpang") echo "id ='active'";?> class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-users me-2"></i>Penumpang</a>
