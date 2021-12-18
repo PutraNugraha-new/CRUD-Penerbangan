@@ -10,6 +10,10 @@ $kelas_penerbangan  =$_POST['kelas_penerbangan'];
 $jumlah_bagasi      =$_POST['jumlah_bagasi'];
 $tgl_keberangkatan  =$_POST['tgl_keberangkatan'];
 
+$id_keberangkatan   =$_POST['id_keberangkatan'];
+$nama_maskapai      =$_POST['nama_maskapai'];
+$tgll_keberangkatan  =$_POST['tgl_keberangkatan'];
+
 
 function tampilkan($data) {
     global $conn;
@@ -84,5 +88,51 @@ function cari_keberangkatan($keyword) {
     ";
     return tampil($query);  
 }
+
+if ($_POST['tambah-keberangkatan']) {
+    $queryTambah = mysqli_query($conn, "INSERT INTO tb_detail_keberangkatan VALUES('','$nama_maskapai','$tgll_keberangkatan')");
+
+    $_SESSION["sukses-tambah"] = 'Data Berhasil Disimpan';
+
+    if ($queryTambah) {
+        echo " <script>
+                    window.location='index.php?p=tb-keberangkatan';
+                </script>
+            ";
+    } else {
+        echo "ERROR, Tidak Berhasil Tambah Data " . mysqli_error($conn);
+    }
+}
+
+if (isset($_POST['edit-keberangkatan'])) {
+    $queryEdit = mysqli_query($conn, " UPDATE tb_detail_keberangkatan SET nama_maskapai='$nama_maskapai', tgl_keberangkatan='$tgll_keberangkatan' WHERE id_keberangkatan= '$id_keberangkatan' ");
+
+    $_SESSION["sukses-edit"]='yey,data anda berhasil diedit!';
+    
+    if ($queryEdit) {
+        echo " <script>
+                    window.location='index.php?p=tb-keberangkatan';
+                </script>
+            ";
+    } else {
+        echo "ERROR, Tidak Berhasil edit Data " . mysqli_error($conn);
+    }
+}
+
+if (isset($_GET['id-keberangkatan'])) {
+    $id_keberangkatan =  $_GET['id-keberangkatan'];
+
+    $queryHapus = mysqli_query($conn, "DELETE FROM tb_detail_keberangkatan WHERE id_keberangkatan= '$id_keberangkatan' ");
+    $_SESSION["sukses-hapus"]='yey,data anda berhasil dihapus!';
+    
+    if ($queryHapus) {
+        echo " <script>
+                    window.location='index.php?p=tb-keberangkatan';
+                </script>
+            ";
+    } else {
+        echo "ERROR, Tidak Berhasil Tambah Data " . mysqli_error($conn);
+    }
+} 
 
 ?>
