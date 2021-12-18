@@ -1,6 +1,7 @@
 <?php 
-require_once 'fungsi-login.php';
-error_reporting(0);
+// require_once 'fungsi-login.php';
+include 'fungsi.php';
+// error_reporting(0);
 session_start();
 
 if(!isset($_SESSION["submit"])) {
@@ -8,17 +9,17 @@ if(!isset($_SESSION["submit"])) {
     exit;
 }
 
-// konfigur paginasi
+// // konfigur paginasi
 // $jumlahdataperhalaman = 5;
-// $jumlahdata = count(tampil("SELECT * FROM user"));
+// $jumlahdata = count(tampilkan("SELECT * FROM tb_penumpang"));
 // $jumlahhalaman = ceil($jumlahdata / $jumlahdataperhalaman);
 // $halamanaktf = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 // $awaldata = ($jumlahdataperhalaman * $halamanaktf) - $jumlahdataperhalaman;
 
-$konten = tampil("SELECT * FROM user");
+$konten = tampilkan("SELECT * FROM tb_data_pilot ");
 
 if (isset($_POST["cari"])) {
-    $konten = cari($_POST["keyword"]);
+    $konten = cari_pilot($_POST["keyword"]);
 }
 
 
@@ -28,34 +29,33 @@ if (isset($_POST["cari"])) {
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
 
 
+
 <div class="container-fluid-post px-4">
                 <div class="row g-3 my-2">
                     <form action="" method="post">
-                    <a class="float-start btn btn-primary" href="index.php?p=regis"><i class="fa fa-plus-circle"></i> Tambah Data</a>
-                    <!-- <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button> -->
-                    <!-- <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari"> -->
+                    <a class="float-start btn btn-primary" href="index.php?p=tambah-pilot"><i class="fa fa-plus-circle"></i> Tambah Data</a>
+                    <button type="submit" name="cari" class="float-end tombol-cari bg-success fas fa-search"></button>
+                    <input type="text" name="keyword" placeholder="Cari" class="float-end me-3 cari">
                     </form>
                     <table class="table  table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama Pengguna</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Aksi</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Pilot</th>
+                                <th scope="col">Asal Maskapai</th>
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i=1; ?>
-                            <?php foreach ($konten as $akun) : ?>
+                            <?php foreach ($konten as $penump) : ?>
                             <tr>
                                 <td><?= $i + $awaldata; ?></td>
-                                <td><?= $akun["nama_pengguna"]; ?></td>
-                                <td><?= $akun["username"]; ?></td>
-                                <td><?= $akun["password"]; ?></td>
+                                <td><?= $penump['nama_pilot']; ?></td>
+                                <td><?= $penump['asal_maskapai']; ?></td>
                                 <td>
-                                <!-- <a class="fa fa-edit btn btn-warning mx-1" href="index.php?p=edit-akun&username=<?php echo $akun['username']; ?>"></a> -->
-                                <a class="hapus fa fa-trash btn btn-danger remove" name="hapus-akun" href="index.php?p=fungsi-login&username=<?php echo $akun['username']; ?>" onclick="return confirm('Yakin ingin menghapus data?');" ></a>
+                                <a class="fa fa-edit btn btn-warning my-2" href="index.php?p=edit-pilot&id-pilot=<?php echo $penump['id_pilot']; ?>"></a>
+                                <a class="hapus fa fa-trash btn btn-danger" name="hapus-pilot" href="index.php?p=fungsi&id-pilot=<?php echo $penump['id_pilot']; ?>" id="btn" onclick="return confirm ('Yakin ingin menghapus data?');"></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -68,7 +68,7 @@ if (isset($_POST["cari"])) {
                         <ul class="pagination">
                                 <?php if ($halamanaktf > 1) : ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="?halaman=<?= $halamanaktf - 1 ?>" aria-label="Previous">
+                                        <a class="page-link" href="index.php?p=tb-penumpang?halaman=<?= $halamanaktf - 1 ?>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -82,7 +82,7 @@ if (isset($_POST["cari"])) {
                                 <?php endfor; ?>
                                 <?php if($halamanaktf < $jumlahhalaman): ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="?halaman=<?= $halamanaktf + 1 ?>" aria-label="Next">
+                                        <a class="page-link" href="/tb-penumpang.php?halaman=<?= $halamanaktf + 1 ?>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
@@ -120,27 +120,27 @@ if (isset($_POST["cari"])) {
 <?php unset($_SESSION['sukses-hapus']);
 } ?>
 
-<?php if (@$_SESSION['confirm-hapus']) { ?>
-	<script>
-		Swal.fire({
-                title: 'Are you sure?',
-                text: "<?php echo $_SESSION['confirm-hapus']; ?>",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-                }).
-                then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                        )
-                    }
-                    })
-	</script>
+	<!-- <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            })
+        });
+	</script> -->
 
-<?php unset($_SESSION['confirm-hapus']);
-} ?>
+
