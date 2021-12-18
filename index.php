@@ -38,7 +38,7 @@ $data = mysqli_fetch_assoc($result);
                         class="fas fa-plane-departure me-2"></i>Keberangkatan</a>
                 <a href="index.php?p=tb-penumpang" <?php if ($_GET["p"] == "tb-penumpang") echo "id ='active'";?> class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-users me-2"></i>Penumpang</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=tb-maskapai" <?php if ($_GET["p"] == "tb-maskapai") echo "id ='active'";?> class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-plane me-2"></i>Maskapai</a>
                 <a href="index.php?p=tb-pilot" <?php if ($_GET["p"] == "tb-pilot") echo "id ='active'";?> class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user-secret me-2"></i> Pilot</a>

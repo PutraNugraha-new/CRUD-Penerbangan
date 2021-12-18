@@ -18,6 +18,11 @@ $id_pilot               = $_POST['id_pilot'];
 $nama_pilot             = $_POST['nama_pilot'];
 $asal_maskapai          = $_POST['asal_maskapai'];
 
+$id_maskapai                =$_POST['id_maskapai'];
+$nama_maskapaii              =$_POST['nama_maskapai'];
+$tgl_pembuatan_pesawatan    =$_POST['tgl_pembuatan_pesawatan'];
+$jadwal_keberangkatan       =$_POST['jadwal_keberangkatan'];
+
 
 function tampilkan($data) {
     global $conn;
@@ -190,6 +195,57 @@ if (isset($_GET['id-pilot'])) {
     } else {
         echo "ERROR, Tidak Berhasil Tambah Data " . mysqli_error($conn);
     }
+}
+
+// fungsi maskapai
+if ($_POST['tambah-maskapai']) {
+	$queryTambah = mysqli_query($conn, "INSERT INTO tb_data_maskapai VALUES('', '$nama_maskapaii', '$tgl_pembuatan_pesawatan', '$jadwal_keberangkatan')");
+
+	$_SESSION["sukses-tambah"] = 'Data Berhasil Disimpan';
+
+	if ($queryTambah) {
+		echo "
+            <script> window.location.href='index.php?p=tb-maskapai';</script>
+            ";
+	} else {
+		echo "ERROR, Tidak Berhasil Tambah Data " . mysqli_error($conn);
+	}
+}
+if(isset($_POST['edit-maskapai'])){
+    $queryEdit = mysqli_query($conn,"UPDATE tb_data_maskapai SET nama_maskapai='$nama_maskapaii',tgl_pembuatan_pesawatan='$tgl_pembuatan_pesawatan',jadwal_keberangkatan='$jadwal_keberangkatan'
+     WHERE id_maskapai='$id_maskapai'") ;
+
+    $_SESSION["sukses-edit"]='yey,data anda berhasil diedit!';
+    
+    if($queryEdit){
+        echo "
+            <script> window.location.href='index.php?p=tb-maskapai';</script>
+            ";
+    }else{
+        echo "ERROR,yah data anda tidak berhasil diedit".mysqli_error($conn);
+    }
+}
+
+if(isset($_GET['id-maskapai'])){
+    $id_maskapai=$_GET['id-maskapai'];
+    $queryHapus=mysqli_query($conn,"DELETE FROM tb_data_maskapai WHERE id_maskapai='$id_maskapai'");
+    $_SESSION["sukses-hapus"]='yey,data anda berhasil dihapus!';
+    if($queryHapus){
+        echo "
+            <script> window.location.href='index.php?p=tb-maskapai';</script>
+            ";
+    }else{
+        echo "ERROR,yah data anda tidak berhasil dihapus".mysqli_error($conn);
+    }
+}
+
+function cari_maskapai($keyword) {
+    $query = "SELECT * FROM tb_data_maskapai WHERE
+                nama_maskapai LIKE '%$keyword%' OR
+                tgl_pembuatan_pesawatan LIKE '%$keyword%' OR
+                jadwal_keberangkatan LIKE '%$keyword%'
+    ";
+    return tampil($query);  
 }
 
 

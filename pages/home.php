@@ -3,6 +3,14 @@ require_once './koneksi.php';
 
 $jp = mysqli_query($conn,"SELECT * FROM tb_penumpang");
 $hitung = mysqli_num_rows($jp);
+$ja = mysqli_query($conn,"SELECT * FROM tb_data_maskapai");
+$hitunga = mysqli_num_rows($ja);
+$jb = mysqli_query($conn,"SELECT * FROM tb_detail_keberangkatan");
+$hitungb = mysqli_num_rows($jb);
+
+$bulan = mysqli_query($conn, "SELECT tgl_keberangkatan FROM tb_detail_keberangkatan GROUP by MONTH(tgl_keberangkatan) Order BY year(tgl_keberangkatan)");
+$perbulan=mysqli_query($conn,"SELECT COUNT(*) AS jumlah_bulanan FROM tb_detail_keberangkatan GROUP BY MONTH(tgl_keberangkatan) Order By year(tgl_keberangkatan) ");
+
 
 
 ?>
@@ -21,7 +29,7 @@ $hitung = mysqli_num_rows($jp);
         <div class="col-md-3 mx-auto" data-tilt>
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">0</h3>
+                    <h3 class="fs-2"><?= $hitunga ?></h3>
                     <p class="fs-5">Jumlah Maskapai</p>
                 </div>
                 <i class="fas fa-plane fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -42,7 +50,7 @@ $hitung = mysqli_num_rows($jp);
         <div class="col-md-3 mx-auto" data-tilt>
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">0</h3>
+                    <h3 class="fs-2"><?= $hitungb ?></h3>
                     <p class="fs-5">Jumlah Keberangkatan</p>
                 </div>
                 <i class="fas fa-plane-departure fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -50,8 +58,8 @@ $hitung = mysqli_num_rows($jp);
         </div>
     </div>
     <div class="row g-3 my-2 mx-5 bg-white shadow-sm rounded" style="width:65%;" data-tilt>
-        <canvas id="myChart"></canvas>
-
+        <canvas id="myChart" ></canvas>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
@@ -65,12 +73,12 @@ $hitung = mysqli_num_rows($jp);
     </script>
     <script>
         const labels =  [<?php while ($b = mysqli_fetch_array($bulan)) { 
-            echo '"' . $b['tanggal'] . '",';
+            echo '"' . $b['tgl_keberangkatan'] . '",';
             }?>];
         const data = {
         labels: labels,
         datasets: [{
-            label: 'Statistik Portal Berita STMIK Palangkaraya',
+            label: 'Statistik Keberangkatan 4Group Airport',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [
@@ -90,7 +98,7 @@ $hitung = mysqli_num_rows($jp);
                 },
                 title:{
                     display:true,
-                    text : 'Statistik Portal Berita STMIK Palangkaraya'
+                    text : 'Statistik Keberangkatan 4Group Airport'
                 }
             }
         }
