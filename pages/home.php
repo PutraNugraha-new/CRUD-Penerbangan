@@ -26,7 +26,7 @@ $perbulan=mysqli_query($conn,"SELECT COUNT(*) AS jumlah_bulanan FROM tb_detail_k
 <body>
     <div class="row g-3 my-2">
 
-        <div class="col-md-3 mx-auto" data-tilt>
+        <div class="col-md-3 mx-auto">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2"><?= $hitunga ?></h3>
@@ -36,7 +36,7 @@ $perbulan=mysqli_query($conn,"SELECT COUNT(*) AS jumlah_bulanan FROM tb_detail_k
             </div>
         </div>
 
-        <div class="col-md-3 mx-auto" data-tilt>
+        <div class="col-md-3 mx-auto">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2"><?= $hitung ?></h3>
@@ -47,7 +47,7 @@ $perbulan=mysqli_query($conn,"SELECT COUNT(*) AS jumlah_bulanan FROM tb_detail_k
             </div>
         </div>
 
-        <div class="col-md-3 mx-auto" data-tilt>
+        <div class="col-md-3 mx-auto">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2"><?= $hitungb ?></h3>
@@ -57,7 +57,7 @@ $perbulan=mysqli_query($conn,"SELECT COUNT(*) AS jumlah_bulanan FROM tb_detail_k
             </div>
         </div>
     </div>
-    <div class="row g-3 my-2 mx-5 bg-white shadow-sm rounded" style="width:65%;" data-tilt>
+    <div class="row g-3 my-2 mx-5 bg-white shadow-sm rounded" style="width:65%;">
         <canvas id="myChart" ></canvas>
         
     </div>

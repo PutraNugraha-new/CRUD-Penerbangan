@@ -18,7 +18,16 @@
                                 <label for="nama">Nama Maskapai</label>
                             </div>
                             <div class="col-8">
-                                <input type="text" id="nama" name="nama_maskapai" class="form-control" value="<?php echo $row['nama_maskapai']; ?>">
+                            <select name="nama_maskapai" class="form-control" style="height:40px !important;" value="" required>
+                                    <option value="nama_maskapai" selected="selected">-- PILIH Maskapai -- 
+                                    <option value="Aviastar">Aviastar</option>
+                                    <option value="Batik Air">Batik Air</option>
+                                    <option value="Citilink">Citilink</option>
+                                    <option value="Garuda Indonesia">Garuda Indonesia</option>
+                                    <option value="Lion Air">Lion Air</option>
+                                    <option value="Nam Air">Nam Air</option>
+                                    <option value="Sriwijaya Air">Sriwijaya Air</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row justify-content-start py-3">
