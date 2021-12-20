@@ -13,8 +13,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid float-start">
-            <a class="navbar-brand " href="#">4Group</a>
+        <div class="container-fluid float-start" style="margin-left:20px;">
+            <a class="navbar-brand " href="#"><img src="image/logo.png" alt="4Group" style="widht: 80px;height: 75px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,7 +25,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#team">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Login</a>
@@ -33,7 +33,7 @@
                 </ul>
             </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="row justify-content-around my-5">
             <div class="col-4 my-5">
                 <h1 class="judul">4Group AirPort</h1>
@@ -43,6 +43,36 @@
                 <img src="image/hero.jpg" alt="" style="width:100%">
             </div>
         </div>
+    </div>
+    <div class="container-fluid" id="tim">
+        <div class="row justify-content-center my-5">
+            <div class="col-7">
+                <h1 style="text-align:center;font-family:Trajan Pro;">TEAM</h1>
+            </div>
+        </div>
+        <div class="row justify-content-around text-center">
+            <div class="col-3">
+                <img src="image/putra.jpg" alt="" class="rounded-img">
+                <h2>PUTRA NUGRAHA</h2>
+            </div>
+            <div class="col-3">
+                <img src="image/rogas.jpeg" alt="" class="rounded-img">
+                <h2>ROGAS PANDINOAN</h2>
+            </div>
+            <div class="col-3">
+                <img src="image/kadek.jpeg" alt="" class="rounded-img">
+                <h2>KADEK DEDI ARDIAMA</h2>
+            </div>
+            <div class="col-3">
+                <img src="image/nata.webp" alt="" class="rounded-img">
+                <h2>ADIYASA ADINATA UDA</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="footer">
+        <div class="row justify-content-center" id="team">
+        <p> Copyright &copy; 2021 - kelompok4. All Right Reserved</p>
     </div>
     
 
@@ -59,10 +89,16 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="assets/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="assets/scrolling-nav.js"></script>
+
     -->
 </body>
 </html>
