@@ -12,16 +12,24 @@ nav {
 
 #tim {
     background-color: #808B94;
-    height: 600px;
+    height: 500px;
 }
 #tim h1 {
     color: white;
     margin-top: 30px;
 }
-
+#tim .profile {
+    height: 200px;
+    width: 200px;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 #tim img {
-    width: 300px;
-    height: 400px;
+    width: 200px;
+    height: 30px;
+    image-resolution: ;
 }
 #tim h2 {
     font-size: 20px !important;
@@ -45,4 +53,24 @@ nav {
 }
 #footer p {
     margin-top: 20px;
+}
+
+
+@media  (max-width:858px){
+    #tim {
+        height: 990px;
+    }
+    #tim img {
+        width: 200px;
+        height: 30px;
+        margin: 0 0 0px 0;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    #tim h2 {
+        margin-top: 0;
+        padding-bottom: -20px;
+        font-size: 10px !important;
+    }
+    
 }

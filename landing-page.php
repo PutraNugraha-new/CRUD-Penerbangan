@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/style2.css">
 
     <title>4Group Airport</title>
@@ -21,13 +22,13 @@
         </div>
         <div class="collapse navbar-collapse float-end me-5" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item mx-3">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mx-3">
                         <a class="nav-link" href="#team">About</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mx-3">
                         <a class="nav-link" href="index.php">Login</a>
                     </li>
                 </ul>
@@ -35,12 +36,13 @@
     </nav>
     <div class="container-fluid" >
         <div class="row justify-content-around my-5">
-            <div class="col-4 my-5">
+            <div class="desk col-4 my-5">
                 <h1 class="judul">4Group AirPort</h1>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque adipisci ea, laudantium, nesciunt excepturi saepe natus non expedita ratione placeat error fugit minus beatae ex.</p>
+                <a href="#team" class="btn btn-primary"> <i class="fas fa-arrow-down">  TEAM</i></a>
             </div>
             <div class="hero col-6">
-                <img src="image/hero.jpg" alt="" style="width:100%">
+                <img src="image/hero.jpg" alt="" style="width:100%" data-tilt>
             </div>
         </div>
     </div>
@@ -51,21 +53,21 @@
             </div>
         </div>
         <div class="row justify-content-around text-center">
-            <div class="col-3">
-                <img src="image/putra.jpg" alt="" class="rounded-img">
+            <div class="profile col-3">
+                <img src="image/putra.jpg" alt="" class="rounded-img" data-tilt>
                 <h2>PUTRA NUGRAHA</h2>
             </div>
-            <div class="col-3">
-                <img src="image/rogas.jpeg" alt="" class="rounded-img">
+            <div class="profile col-3">
+                <img src="image/rogas.jpeg" alt="" class="rounded-img" data-tilt>
                 <h2>ROGAS PANDINOAN</h2>
             </div>
-            <div class="col-3">
-                <img src="image/kadek.jpeg" alt="" class="rounded-img">
+            <div class="profile col-3">
+                <img src="image/kadek.jpeg" alt="" class="rounded-img" data-tilt>
                 <h2>KADEK DEDI ARDIAMA</h2>
             </div>
-            <div class="col-3">
-                <img src="image/nata.webp" alt="" class="rounded-img">
-                <h2>ADIYASA ADINATA UDA</h2>
+            <div class="profile col-3">
+                <img src="image/nata.webp" alt="" class="rounded-img" data-tilt>
+                <h2>ADIYASA DINATA UDA</h2>
             </div>
         </div>
     </div>
@@ -98,7 +100,6 @@
 
     <!-- Custom JavaScript for this theme -->
     <script src="assets/scrolling-nav.js"></script>
-
-    -->
+    <script type="text/javascript" src="assets/vanilla-tilt.min.js"></script>
 </body>
 </html>
